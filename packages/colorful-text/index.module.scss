@@ -1,0 +1,7 @@
+.colorful-text {
+  &-wrapper {
+    background-color: #000;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
