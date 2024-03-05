@@ -3,22 +3,34 @@ import { useMemo } from "react";
 import { textSplit } from "./utils";
 import { defaultWidgetMap } from "./widget";
 import DividingParagraph from "./components/dividing-paragraph";
-import { BuildInWidgetProps, WidgetMap } from "./typings/widget";
+import {
+  BaseWidgetProps,
+  BuildInWidgetProps,
+  WidgetMap,
+} from "./typings/widget";
 
 export interface SpecifyTextProps extends BuildInWidgetProps {
   text: string;
   wrapperClassName?: string;
   widgetMap?: WidgetMap;
+
+  textSplit?: (textStr: string) => (BaseWidgetProps | string)[];
 }
 
 const SpecifyText = <T,>(
   props: NonNullable<T> & NonNullable<SpecifyTextProps>
 ) => {
-  const { text, wrapperClassName, widgetMap, ...resetProps } = props;
+  const {
+    text,
+    wrapperClassName,
+    widgetMap,
+    textSplit: textSplitFn,
+    ...resetProps
+  } = props;
 
   const paragraphs = useMemo(() => {
-    return textSplit(text) ?? [];
-  }, [text]);
+    return (textSplitFn ? textSplitFn(text) : textSplit(text)) ?? [];
+  }, [text, textSplitFn]);
 
   const curWidget = useMemo(
     () => ({ ...defaultWidgetMap, ...widgetMap }),

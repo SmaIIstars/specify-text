@@ -241,3 +241,41 @@ const ColorfulText = (props: ColorfulTextProps) => {
 
 export default memo(ColorfulText);
 ```
+
+### 自定义文案约定格式
+
+可以自己约定文案的解析格式, 只需要满足最终返回对象包含以下几点即可:
+
+```typescript
+export type BaseWidgetProps = {
+  text: string;
+  type?: any;
+  typeVal?: any;
+};
+```
+
+使用方法:
+
+```typescript
+const SpecifyTextCustom = (props: SpecifyTextCustomType) => {
+  const customTextSplit = (textStr: string) => {
+    // 自定义处理逻辑
+
+    return [
+      {
+        text: textStr,
+        type: "custom",
+        typeVal: "custom",
+      },
+    ];
+  };
+
+  return (
+    <SpecifyText<CustomWidgetMapProps>
+      {...props}
+      widgetMap={widgetMap}
+      textSplit={customTextSplit}
+    />
+  );
+};
+```
