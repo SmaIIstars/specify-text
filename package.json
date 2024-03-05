@@ -6,6 +6,15 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmaIIstars/specify-text.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SmaIIstars/specify-text/issues"
+  },
+  "homepage": "https://github.com/SmaIIstars/specify-text",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
