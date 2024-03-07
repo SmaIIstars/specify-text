@@ -11,13 +11,13 @@ import {
 export interface CustomWidgetTypeMap {
   colorful: ColorfulTextProps;
   link: LinkTextProps;
-  var: VariableTextProps;
+  variable: VariableTextProps;
 }
 
 const widgetMap: WidgetMap<CustomWidgetTypeMap> = {
   colorful: (props: ColorfulTextProps) => <ColorfulText {...props} />,
   link: (props: LinkTextProps) => <LinkText {...props} />,
-  var: (props: VariableTextProps) => <VariableText {...props} />,
+  variable: (props: VariableTextProps) => <VariableText {...props} />,
 };
 export default widgetMap;
 

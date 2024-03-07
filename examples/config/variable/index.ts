@@ -2,7 +2,7 @@ import { ExampleConfig } from "../typings";
 import styles from "./index.module.scss";
 
 const commonConfig = {
-  text: "[Year](var:year) Happy New Year!",
+  text: "[Year](variable:year) Happy New Year!",
   blankLineClassName: styles.variableBlankLine,
   variableClassName: styles.variableText,
   variableMap: { year: 2024 },

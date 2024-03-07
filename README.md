@@ -121,20 +121,29 @@ export default CustomSpecifyText;
 
 已支持换行符换行(\n), 不需要额外配置直接使用即可
 
-```bash
+```markdown
 Specify\nText
 ```
 
 ![build-in-dividing-line](https://cdn.jsdelivr.net/gh/SmaIIstars/imgCDN/specify-text/build-in-dividing-line.png)
 
+| Name               | Description | Required | Default | Type   | Tip |
+| ------------------ | ----------- | -------- | ------- | ------ | --- |
+| blankLineClassName | 包装类名称  | No       |         | string |     |
+
 #### 斜体
 
-```bash
+```markdown
 # typeVal 可为任意值, 不是必传
+
 start [123456789](italics:true) end
 ```
 
 ![build-in-italics](https://cdn.jsdelivr.net/gh/SmaIIstars/imgCDN/specify-text/build-in-italics.png)
+
+| Name          | Description | Required | Default | Type   | Tip |
+| ------------- | ----------- | -------- | ------- | ------ | --- |
+| textClassName | 包装类名称  | No       |         | string |     |
 
 ### 已提供的组件
 
@@ -142,29 +151,42 @@ start [123456789](italics:true) end
 
 #### 彩色字体
 
-```bash
+```markdown
 # 1. linear-gradient 开头会添加到 background-image 属性
+
 [SpecifyText](colorful:linear-gradient(270deg, #00d6c8 0%, #00a3f5 100%))
 
 # 2. 其余添加 background-color 属性
+
 [SpecifyText](colorful:red)
 ```
 
 ![provided-colorful](https://cdn.jsdelivr.net/gh/SmaIIstars/imgCDN/specify-text/provided-colorful.png)
 
+| Name                  | Description | Required | Default | Type   | Tip                     |
+| --------------------- | ----------- | -------- | ------- | ------ | ----------------------- |
+| colorfulTextClassName | 包装类名称  | No       |         | string |                         |
+| typeVal               | 值          | Yes      |         | string | rgba 或 linear-gradient |
+
 #### 超链接
 
-```bash
+```markdown
 [SpecifyText](link:https://www.npmjs.com/package/specify-text)
 ```
 
 ![provided-link](https://cdn.jsdelivr.net/gh/SmaIIstars/imgCDN/specify-text/provided-link.png)
 
+| Name                 | Description    | Required | Default | Type                   | Tip  |
+| -------------------- | -------------- | -------- | ------- | ---------------------- | ---- |
+| linkWrapperClassName | 包装类名称     | No       |         | string                 |      |
+| typeVal              | 值             | Yes      |         | string                 | 链接 |
+| onClick              | 自定义点击事件 | No       |         | (link: string) => void |      |
+
 #### 变量
 
 ```typescript
 //  text 文案
-// [any description](var:year) ,Happy New Year!
+// [any description](var:variable) ,Happy New Year!
 
 import { SpecifyText, VariableText } from "specify-text";
 
@@ -176,7 +198,7 @@ const widgetMap = {
 const SpecifyTextPage = () => {
   return (
     <SpecifyText
-      text="[any description](var:year) ,Happy New Year!"
+      text="[Year](variable:year) Happy New Year!"
       widgetMap={widgetMap}
       variableMap={{ year: 2024 }}
     />
@@ -185,6 +207,14 @@ const SpecifyTextPage = () => {
 
 export default SpecifyTextPage;
 ```
+
+![variable](https://cdn.jsdelivr.net/gh/SmaIIstars/imgCDN/specify-text/provided-variable.png)
+
+| Name              | Description | Required | Default | Type                | Tip            |
+| ----------------- | ----------- | -------- | ------- | ------------------- | -------------- |
+| variableClassName | 包装类名称  | No       |         | string              |                |
+| typeVal           | 值          | Yes      |         | string              | 使用的变量名称 |
+| variableMap       | 变量映射表  | Yes      |         | Record<string, any> |                |
 
 ### 自定义组件
 

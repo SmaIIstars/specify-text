@@ -24,11 +24,13 @@ const VariableText = (props: VariableTextProps) => {
   );
 
   return (
-    <DividingParagraph
-      text={realVal}
-      dividingParagraphWrapperClassName={variableClassName}
-      {...resetProps}
-    />
+    <>
+      <DividingParagraph
+        dividingParagraphWrapperClassName={variableClassName}
+        {...resetProps}
+        text={`${realVal}`}
+      />
+    </>
   );
 };
 
