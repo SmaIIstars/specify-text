@@ -4,3 +4,6 @@
 # Version 0.0.2
 - 更新 README.md
 - 新增自定义文本处理逻辑功能
+
+# Version 0.0.3
+- fix: react版本过高导致低版本使用报错
