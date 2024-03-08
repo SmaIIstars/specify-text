@@ -1,6 +1,6 @@
 {
   "name": "specify-text",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "author": "smallstars.he@qq.com",
   "main": "./dist/index.cjs",
@@ -37,9 +37,9 @@
       "path": "node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.5",
@@ -56,7 +56,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "sass": "^1.69.5",
-    "specify-text": "^0.0.1",
+    "specify-text": "latest",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
