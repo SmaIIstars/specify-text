@@ -7,3 +7,7 @@
 
 # Version 0.0.3
 - fix: react版本过高导致低版本使用报错
+
+# Version 0.0.4
+- 更改打包后类名
+- 更新 更新 README.md 样式引入

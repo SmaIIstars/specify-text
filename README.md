@@ -45,6 +45,11 @@ const SpecifyTextPage = () => {
 export default SpecifyTextPage;
 ```
 
+### 样式引入
+```typescript
+import "specify-text/style";
+```
+
 ![basic-usage](https://cdn.jsdelivr.net/gh/SmaIIstars/imgCDN/specify-text/basic-usage.png)
 
 ### 进阶使用
