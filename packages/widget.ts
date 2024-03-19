@@ -17,3 +17,6 @@ export { default as LinkText } from "./link-text";
 
 export type { VariableTextProps } from "./variable-text";
 export { default as VariableText } from "./variable-text";
+
+export type { ConditionalTextProps } from "./conditional-text";
+export { default as ConditionalText } from "./conditional-text";

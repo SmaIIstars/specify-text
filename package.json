@@ -1,6 +1,6 @@
 {
   "name": "specify-text",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "author": "smallstars.he@qq.com",
   "main": "./dist/index.cjs",

@@ -46,6 +46,7 @@ export default SpecifyTextPage;
 ```
 
 ### 样式引入
+
 ```typescript
 import "specify-text/style";
 ```
@@ -220,6 +221,41 @@ export default SpecifyTextPage;
 | variableClassName | 包装类名称  | No       |         | string              |                |
 | typeVal           | 值          | Yes      |         | string              | 使用的变量名称 |
 | variableMap       | 变量映射表  | Yes      |         | Record<string, any> |                |
+
+#### 条件判断
+
+只有符合条件的内容会被展示, 变量名称可以是任意值, 通过传入的变量名称来判断的, 如果以变量名称为变量的值为 TRUE, 则会展示, 否则不展示. (例如示例, 1 为屏幕宽度 <= 1280, 2 为屏幕宽度 <= 1920, 3 为其他)
+
+```tsx
+const getSizeBasedOnScreenWidth = () => {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth <= 1280) {
+    return 1;
+  } else if (screenWidth <= 1980) {
+    return 2;
+  } else {
+    return 3;
+  }
+};
+
+const text = "[ScreenSize1\n](conditional:screenSize1)[ScreenSize2\n](conditional:screenSize2)[ScreenSize3\n](conditional:screenSize3)[ScreenSize12\n](conditional:screenSize1,screenSize2)[ScreenSize23\n](conditional:screenSize2,screenSize3)"
+
+
+<SpecifyText
+  text={text}
+  conditionalMap={{ [`screenSize${getSizeBasedOnScreenWidth()}`]: true }}
+/>
+```
+
+![variable](https://cdn.jsdelivr.net/gh/SmaIIstars/imgCDN/specify-text/provided-conditional.png)
+
+| Name                     | Description    | Required | Default | Type                    | Tip              |
+| ------------------------ | -------------- | -------- | ------- | ----------------------- | ---------------- |
+| conditionalTextClassName | 包装类名称     | No       |         | string                  |                  |
+| typeVal                  | 值             | Yes      |         | string                  | 条件变量名称     |
+| delimiter                | 分隔符         | No       | ,       | string                  | 多条件之间分隔符 |
+| conditionalMap           | 条件变量映射表 | Yes      |         | Record<string, boolean> |                  |
 
 ### 自定义组件
 

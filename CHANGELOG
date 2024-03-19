@@ -10,4 +10,8 @@
 
 # Version 0.0.4
 - 更改打包后类名
-- 更新 更新 README.md 样式引入
+- 更新 README.md 样式引入
+
+# Version 0.0.5
+- 新增条件判断组件
+- 更新 README.md 条件判断组件说明

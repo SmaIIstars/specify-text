@@ -35,7 +35,7 @@ const App = () => {
                 [styles.appPackagesTextCenter]: idx,
               })}
             >
-              {text.replace("\n", "\\n")}
+              {JSON.stringify(text).slice(1, -1)}
             </div>
 
             <div className={cls(styles.appPackages, styles.appPackagesDev)}>

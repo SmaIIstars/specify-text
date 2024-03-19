@@ -1,9 +1,17 @@
 import { defineConfig } from "vite";
+import { readFileSync } from "fs";
 import react from "@vitejs/plugin-react";
 import typescript from "@rollup/plugin-typescript";
 import path from "path";
 
 const resolve = (directory: string) => path.join(__dirname, directory);
+
+const packageJson = JSON.parse(
+  readFileSync("./package.json", { encoding: "utf-8" })
+);
+const globals = {
+  ...(packageJson?.dependencies || {}),
+};
 
 export default defineConfig({
   plugins: [
@@ -32,7 +40,6 @@ export default defineConfig({
   build: {
     outDir: "dist",
     lib: {
-      // 注意此处的路径要配置正确
       entry: resolve("packages/index.ts"),
       name: "SpecifyText",
       fileName: "index",
@@ -41,7 +48,7 @@ export default defineConfig({
     // 自定义构建配置，可直接调整底层Rollup选项；Rollup有一套预设
     // https://rollupjs.org/guide/en/#big-list-of-options
     rollupOptions: {
-      external: ["react"],
+      external: ["react", "react-dom", ...Object.keys(globals)],
       output: { globals: { react: "React" } },
     },
     sourcemap: "hidden",
