@@ -53,7 +53,6 @@ export default defineConfig({
         "react-dom",
         // ...Object.keys(globals)
       ],
-      output: { globals: { react: "react" } },
     },
     sourcemap: "hidden",
   },
