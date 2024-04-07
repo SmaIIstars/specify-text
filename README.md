@@ -101,7 +101,9 @@ const widgetMap: WidgetMap<CustomWidgetTypeMap> = {
 export type CustomWidgetMapProps<T = CustomWidgetTypeMap> = Partial<T[keyof T]>;
 
 // 建议再次封装一层, 这样就不用每次在调用 SpecifyText 组件的时候都需要传入范型
-type CustomSpecifyTextProps = Record<string, any>
+type CustomSpecifyTextProps = BuildInWidgetProps &
+  BaseWidgetProps &
+  CustomWidgetMapProps
 
 const CustomSpecifyText = (props: CustomSpecifyTextProps) => {
   return (

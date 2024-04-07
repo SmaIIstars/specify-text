@@ -9,7 +9,7 @@ export interface DividingParagraphProps
     StrongProps,
     BlankLineProps {
   dividingParagraphWrapperClassName?: string;
-  onClick?: (...args: unknown[]) => unknown;
+  onClick?: (...args: any[]) => any;
 }
 
 const DividingParagraph = (props: DividingParagraphProps) => {

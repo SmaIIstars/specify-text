@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useResize = (callback: (...args: unknown[]) => unknown) => {
+const useResize = (callback: (...args: any[]) => any) => {
   useEffect(() => {
     callback();
     window.addEventListener("resize", callback, {

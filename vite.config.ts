@@ -6,12 +6,12 @@ import path from "path";
 
 const resolve = (directory: string) => path.join(__dirname, directory);
 
-const packageJson = JSON.parse(
-  readFileSync("./package.json", { encoding: "utf-8" })
-);
-const globals = {
-  ...(packageJson?.dependencies || {}),
-};
+// const packageJson = JSON.parse(
+//   readFileSync("./package.json", { encoding: "utf-8" })
+// );
+// const globals = {
+//   ...(packageJson?.dependencies || {}),
+// };
 
 export default defineConfig({
   plugins: [
@@ -43,13 +43,17 @@ export default defineConfig({
       entry: resolve("packages/index.ts"),
       name: "SpecifyText",
       fileName: "index",
-      formats: ["es", "cjs"],
+      formats: ["es", "cjs", "umd"],
     },
-    // 自定义构建配置，可直接调整底层Rollup选项；Rollup有一套预设
+
     // https://rollupjs.org/guide/en/#big-list-of-options
     rollupOptions: {
-      external: ["react", "react-dom", ...Object.keys(globals)],
-      output: { globals: { react: "React" } },
+      external: [
+        "react",
+        "react-dom",
+        // ...Object.keys(globals)
+      ],
+      output: { globals: { react: "react" } },
     },
     sourcemap: "hidden",
   },

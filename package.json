@@ -1,20 +1,11 @@
 {
   "name": "specify-text",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "author": "smallstars.he@qq.com",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/SmaIIstars/specify-text.git"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SmaIIstars/specify-text/issues"
-  },
-  "homepage": "https://github.com/SmaIIstars/specify-text",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
@@ -37,6 +28,15 @@
       "path": "node_modules/cz-conventional-changelog"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmaIIstars/specify-text.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SmaIIstars/specify-text/issues"
+  },
+  "homepage": "https://github.com/SmaIIstars/specify-text",
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16"

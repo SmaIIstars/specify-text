@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { BaseWidgetProps } from "@/specify-text/typings";
+import { BaseWidgetProps, BuildInWidgetProps } from "@/specify-text/typings";
 import SpecifyText from "@/specify-text";
 
 import widgetMap, { CustomWidgetMapProps } from "../../config/widget-map";
 import { getSizeBasedOnScreenWidth } from "../../utils";
 import useResize from "../../hooks/resize";
 
-export type SpecifyTextCustomType = BaseWidgetProps & CustomWidgetMapProps;
+export type SpecifyTextCustomType = BuildInWidgetProps &
+  BaseWidgetProps &
+  CustomWidgetMapProps;
 
 const SpecifyTextCustom = (props: SpecifyTextCustomType) => {
   const [screenSize, setScreenSize] = useState<number>(1);
