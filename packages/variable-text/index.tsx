@@ -17,10 +17,16 @@ export interface VariableTextProps
 }
 
 const VariableText = (props: VariableTextProps) => {
-  const { typeVal, variableMap = {}, variableClassName, ...resetProps } = props;
+  const {
+    text,
+    typeVal,
+    variableMap = {},
+    variableClassName,
+    ...resetProps
+  } = props;
   const realVal = useMemo(
-    () => Reflect.get(variableMap, typeVal, ""),
-    [typeVal, variableMap]
+    () => Reflect.get(variableMap, typeVal) ?? text,
+    [typeVal, variableMap, text]
   );
 
   return (
