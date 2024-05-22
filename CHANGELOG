@@ -25,3 +25,6 @@
 # Version 0.0.8
 - fix: 更新正则表达式
 - fix: 移除 sourcemap
+
+# Version 0.0.9
+- docs: 更新换行组件支持换行符`\n`不支持`\\n`的说明
