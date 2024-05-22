@@ -39,7 +39,8 @@ npm i specify-text
 import SpecifyText from "specify-text";
 
 const SpecifyTextPage = () => {
-  return <SpecifyText text="start\nend" />;
+  // 注意: 换行符 \n 会被转义的情况
+  return <SpecifyText text={"start\nend"} />;
 };
 
 export default SpecifyTextPage;
@@ -127,7 +128,7 @@ export default CustomSpecifyText;
 
 #### 换行
 
-已支持换行符换行(\n), 不需要额外配置直接使用即可
+已支持换行符换行(`\n`), 不需要额外配置直接使用即可. (注意会被转义为 `\\n` 的情况不支持)
 
 ```markdown
 Specify\nText
