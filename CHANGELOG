@@ -1,23 +1,27 @@
 # Version 0.0.1
-- 初始版本发布
+- feat: 初始版本发布
 
 # Version 0.0.2
-- 更新 README.md
-- 新增自定义文本处理逻辑功能
+- feat: 新增自定义文本处理逻辑功能
+- docs: 更新 README.md
 
 # Version 0.0.3
 - fix: react版本过高导致低版本使用报错
 
 # Version 0.0.4
-- 更改打包后类名
-- 更新 README.md 样式引入
+- fix: 更改打包后类名
+- docs: 更新 README.md 样式引入
 
 # Version 0.0.5
-- 新增条件判断组件
-- 更新 README.md 条件判断组件说明
+- feat: 新增条件判断组件
+- docs: 更新 README.md 条件判断组件说明
 
 # Version 0.0.6
-- 修改类型声明
+- fix: 修改类型声明
 
 # Version 0.0.7
-- 修改 Variable 未取到值的默认值为 Description
+- fix: 修改 Variable 未取到值的默认值为 Description
+
+# Version 0.0.8
+- fix: 更新正则表达式
+- fix: 移除 sourcemap

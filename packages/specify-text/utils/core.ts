@@ -1,6 +1,6 @@
 import { BaseWidgetProps } from "../typings/widget";
 
-const SpecifyTextRegex = /\[([\s\S]*?)\]\((.*?):(.*?[)]?)\)/g;
+const SpecifyTextRegex = /\[(.*?)\]\((.*?):(.*?[)]?)\)/gs;
 
 type TextSliceType = (BaseWidgetProps | string)[];
 

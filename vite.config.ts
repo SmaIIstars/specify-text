@@ -54,6 +54,6 @@ export default defineConfig({
         // ...Object.keys(globals)
       ],
     },
-    sourcemap: "hidden",
+    // sourcemap: "hidden",
   },
 });
