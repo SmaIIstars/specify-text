@@ -5,9 +5,9 @@ import { StrongProps } from "@/specify-text/components/strong";
 import BlankLine, {
   BlankLineProps,
 } from "@/specify-text/components/blank-line";
-import DividingParagraph from "@/specify-text/components/dividing-paragraph";
 
 import styles from "./index.module.scss";
+import SpecifyText from "@/specify-text";
 
 export interface LinkTextProps
   extends BaseWidgetProps,
@@ -27,11 +27,8 @@ const LinkText = (props: LinkTextProps) => {
     text,
     type: linkType,
     typeVal,
-
     linkWrapperClassName,
     onClick: handleClick,
-
-    ...resetProps
   } = props;
 
   const paragraphs = text.split("\n");
@@ -51,11 +48,11 @@ const LinkText = (props: LinkTextProps) => {
     >
       {paragraphs?.map((line, idx) => (
         <React.Fragment key={line}>
-          <DividingParagraph text={line} {...resetProps} />
+          <SpecifyText {...props} text={line} />
           {idx + 1 !== paragraphs.length && (
             <BlankLine
               blankLineClassName={styles.linkTextBlankLine}
-              {...resetProps}
+              {...props}
             />
           )}
         </React.Fragment>

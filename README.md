@@ -39,7 +39,7 @@ npm i specify-text
 import SpecifyText from "specify-text";
 
 const SpecifyTextPage = () => {
-  // 注意: 换行符 \n 会被转义的情况
+  // 注意: 换行符 \n 转义的情况
   return <SpecifyText text={"start\nend"} />;
 };
 
@@ -128,7 +128,7 @@ export default CustomSpecifyText;
 
 #### 换行
 
-已支持换行符换行(`\n`), 不需要额外配置直接使用即可. (注意会被转义为 `\\n` 的情况不支持)
+已支持换行符换行(`\n`), 不需要额外配置直接使用即可. (注意 `\\n` 的情况不支持)
 
 ```markdown
 Specify\nText
@@ -153,6 +153,21 @@ start [123456789](italics:true) end
 | Name          | Description | Required | Default | Type   | Tip |
 | ------------- | ----------- | -------- | ------- | ------ | --- |
 | textClassName | 包装类名称  | No       |         | string |     |
+
+#### 加粗
+
+```markdown
+# typeVal 转 Boolean 值为 True 的任意值
+
+[2024](strong:true), Happy [New](strong:true) Year!
+```
+
+![build-in-strong](https://cdn.jsdelivr.net/gh/SmaIIstars/imgCDN/specify-text/build-in-strong.png)
+
+| Name          | Description      | Required | Default | Type   | Tip |
+| ------------- | ---------------- | -------- | ------- | ------ | --- |
+| strong        | 整段文字是否加粗 | No       | false   | string |     |
+| textClassName | 加粗文案类名称   | No       |         | string |     |
 
 ### 已提供的组件
 

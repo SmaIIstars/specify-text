@@ -7,6 +7,7 @@ import BlankLine, {
 } from "@/specify-text/components/blank-line";
 
 import styles from "./index.module.scss";
+import SpecifyText from "@/specify-text";
 
 export interface ColorfulTextProps extends BaseWidgetProps, BlankLineProps {
   type: "colorful";
@@ -24,8 +25,10 @@ const ColorfulText = (props: ColorfulTextProps) => {
       {paragraphs?.map((line, idx) => {
         return (
           <React.Fragment key={line}>
-            <span
-              className={cls([
+            <SpecifyText
+              {...props}
+              text={line}
+              wrapperClassName={cls([
                 colorfulTextClassName,
                 styles.colorfulTextWrapper,
               ])}
@@ -34,9 +37,7 @@ const ColorfulText = (props: ColorfulTextProps) => {
                   ? `backgroundImage`
                   : `backgroundColor`]: typeVal,
               }}
-            >
-              {line}
-            </span>
+            />
 
             {idx + 1 !== paragraphs.length && <BlankLine {...resetProps} />}
           </React.Fragment>

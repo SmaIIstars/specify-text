@@ -8,6 +8,8 @@ import {
   VariableTextProps,
   ConditionalText,
   ConditionalTextProps,
+  Strong,
+  StrongProps,
 } from "../../packages";
 
 export interface CustomWidgetTypeMap {
@@ -15,6 +17,7 @@ export interface CustomWidgetTypeMap {
   link: LinkTextProps;
   variable: VariableTextProps;
   conditional: ConditionalTextProps;
+  strong: ConditionalTextProps;
 }
 
 const widgetMap: WidgetMap<CustomWidgetTypeMap> = {
@@ -22,6 +25,7 @@ const widgetMap: WidgetMap<CustomWidgetTypeMap> = {
   link: (props: LinkTextProps) => <LinkText {...props} />,
   variable: (props: VariableTextProps) => <VariableText {...props} />,
   conditional: (props: ConditionalTextProps) => <ConditionalText {...props} />,
+  strong: (props: StrongProps) => <Strong {...props} />,
 };
 export default widgetMap;
 

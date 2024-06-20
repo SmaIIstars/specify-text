@@ -4,6 +4,7 @@ import cls from "classnames";
 import { BaseWidgetProps } from "@/specify-text/typings/widget";
 
 import styles from "./index.module.scss";
+import SpecifyText from "@/specify-text";
 
 export interface ConditionalTextProps extends BaseWidgetProps {
   type: "conditional";
@@ -28,11 +29,11 @@ const ConditionalText = (props: ConditionalTextProps) => {
   }, [typeVal, delimiter, conditionalMap]);
 
   return isShow ? (
-    <div
+    <SpecifyText
+      {...props}
+      text={typeVal}
       className={cls([styles.conditionalTextWrapper, conditionalTextClassName])}
-    >
-      {typeVal}
-    </div>
+    />
   ) : (
     <></>
   );

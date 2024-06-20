@@ -20,3 +20,6 @@ export { default as VariableText } from "./variable-text";
 
 export type { ConditionalTextProps } from "./conditional-text";
 export { default as ConditionalText } from "./conditional-text";
+
+export type { StrongProps } from "./specify-text/components/strong";
+export { default as Strong } from "./specify-text/components/strong";

@@ -1,13 +1,14 @@
 import { ExampleConfig } from "../typings";
 
 const commonConfig = {
-  text: "[ScreenSize1](conditional:screenSize1)[ScreenSize2](conditional:screenSize2)[ScreenSize3](conditional:screenSize3)",
+  text: "[2024](strong:true), Happy [New](strong:true) Year!",
 };
 
 const config: ExampleConfig = {
-  title: "Conditional",
+  title: "Strong",
   text: commonConfig.text,
   configs: new Array(3).fill(commonConfig),
+  buildIn: true,
 };
 
 export default config;

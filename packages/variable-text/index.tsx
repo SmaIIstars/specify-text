@@ -2,7 +2,7 @@ import { memo, useMemo } from "react";
 import { BlankLineProps } from "@/specify-text/components/blank-line";
 import { BaseWidgetProps } from "@/specify-text/typings";
 import { StrongProps } from "@/specify-text/components/strong";
-import DividingParagraph from "@/specify-text/components/dividing-paragraph";
+import SpecifyText from "@/specify-text";
 
 export interface VariableTextProps
   extends BaseWidgetProps,
@@ -17,26 +17,18 @@ export interface VariableTextProps
 }
 
 const VariableText = (props: VariableTextProps) => {
-  const {
-    text,
-    typeVal,
-    variableMap = {},
-    variableClassName,
-    ...resetProps
-  } = props;
+  const { text, typeVal, variableMap = {}, variableClassName } = props;
   const realVal = useMemo(
     () => Reflect.get(variableMap, typeVal) ?? text,
     [typeVal, variableMap, text]
   );
 
   return (
-    <>
-      <DividingParagraph
-        dividingParagraphWrapperClassName={variableClassName}
-        {...resetProps}
-        text={`${realVal}`}
-      />
-    </>
+    <SpecifyText
+      {...props}
+      wrapperClassName={variableClassName}
+      text={`${realVal}`}
+    />
   );
 };
 
