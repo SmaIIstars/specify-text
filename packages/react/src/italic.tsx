@@ -1,5 +1,5 @@
 import { isValidText } from "@specify-text/parser";
-import React, { memo } from "react";
+import React from "react";
 
 import { BlankLine, BlankLineProps } from "@specify-text/react-widgets-base";
 import { BaseWidgetProps } from "@specify-text/react-widgets-base";
@@ -45,4 +45,4 @@ const Italic = (props: ItalicProps) => {
   );
 };
 
-export default memo(Italic);
+export default Italic;

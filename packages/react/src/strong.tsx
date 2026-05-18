@@ -1,5 +1,4 @@
 import { isValidText } from "@specify-text/parser";
-import { memo } from "react";
 
 import { SpecifyText } from "./specify-text";
 import { BaseWidgetProps } from "@specify-text/react-widgets-base";
@@ -33,4 +32,4 @@ const Strong = (props: StrongProps) => {
   );
 };
 
-export default memo(Strong);
+export default Strong;
