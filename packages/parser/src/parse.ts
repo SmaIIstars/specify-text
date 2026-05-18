@@ -11,13 +11,13 @@ enum State {
   MinBracketClosed = 2,
 }
 
-function parseDefault(text: string): (Segment | string)[] {
+function parseDefault(text: string, regex: RegExp): (Segment | string)[] {
   const bracketStack: string[] = [];
   const result: (Segment | string)[] = [];
 
   let state: State = State.Init;
 
-  if (!isValidTextDefault(text)) return [text];
+  if (!isValidTextDefault(text, regex)) return [text];
 
   let cursor = text.indexOf('[');
   const current: { text?: string; type?: string; typeVal?: string } = { text: '' };
@@ -94,7 +94,7 @@ export function parse(text: string, options?: ParseOptions): (Segment | string)[
   if (!isValidTextDefault(text, regex)) {
     return [text];
   }
-  return parseDefault(text);
+  return parseDefault(text, regex);
 }
 
 export function isValidText(text: string, regex?: RegExp): boolean {
