@@ -8,7 +8,7 @@ export interface ParagraphGroupProps
     BlankLineProps {
   textClassName?: string;
   paragraphGroupWrapperClassName?: string;
-  onClick?: (...args: any[]) => any;
+  onClick?: React.MouseEventHandler<HTMLSpanElement>;
 }
 
 const ParagraphGroup = (props: ParagraphGroupProps) => {

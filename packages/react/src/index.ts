@@ -1,6 +1,8 @@
 export { SpecifyText } from "./specify-text";
 export type { SpecifyTextProps } from "./specify-text";
 export { DEFAULT_BASE_WIDGETS } from "./default-widgets";
+export { ErrorBoundary } from "./error-boundary";
+export type { ErrorBoundaryProps } from "./error-boundary";
 
 // Re-export from widgets-base for convenience
 export { BlankLine, ParagraphGroup } from "@specify-text/react-widgets-base";

@@ -3,6 +3,7 @@ import { Segment, ParseOptions, parse } from '@specify-text/parser';
 import { ComponentResolver, createCatalog } from '@specify-text/core';
 import { ParagraphGroup } from '@specify-text/react-widgets-base';
 import { DEFAULT_BASE_WIDGETS } from './default-widgets';
+import { ErrorBoundary } from './error-boundary';
 
 export interface SpecifyTextProps {
   text: string;
@@ -56,9 +57,15 @@ const SpecifyTextInner = (props: SpecifyTextProps) => {
             if (resolver) {
               try {
                 return (
-                  <React.Fragment key={idx}>
+                  <ErrorBoundary
+                    key={idx}
+                    onError={(e) => onError?.(e, item)}
+                    fallback={
+                      <ParagraphGroup {...props} text={item.text} />
+                    }
+                  >
                     {resolver({ ...props, ...item }) as React.ReactNode}
-                  </React.Fragment>
+                  </ErrorBoundary>
                 );
               } catch (e) {
                 const error = e instanceof Error ? e : new Error(String(e));

@@ -10,8 +10,7 @@ export interface VariableTextProps
     StrongProps {
   type: "variable";
   typeVal: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  variableMap: Record<string, any>;
+  variableMap: Record<string, unknown>;
 
   variableClassName?: string;
 }
