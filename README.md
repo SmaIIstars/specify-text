@@ -18,6 +18,40 @@ SpecifyText 擅长处理特定格式的文本. 它能将文本解析并与预设
 
 SpecifyText 在处理各种特殊文本格式时非常高效、灵活, 能大大提高开发效率, 减少重复性开发量.
 
+## Packages
+
+specify-text is organized as a monorepo:
+
+| Package | Description | npm |
+|---------|-------------|-----|
+| `specify-text` | React renderer (main entry) | `npm i specify-text` |
+| `@specify-text/parser` | Framework-agnostic DSL parser | `npm i @specify-text/parser` |
+| `@specify-text/core` | Component catalog & resolver | `npm i @specify-text/core` |
+| `@specify-text/react` | React renderer (standalone) | `npm i @specify-text/react` |
+| `@specify-text/react-widgets-base` | Base widgets (auto-registered) | `npm i @specify-text/react-widgets-base` |
+| `@specify-text/react-widgets-builtin` | Builtin extension widgets | `npm i @specify-text/react-widgets-builtin` |
+
+### Usage
+
+**Quick start (same as before):**
+```tsx
+import SpecifyText from 'specify-text';
+
+<SpecifyText text="Hello [world](strong:true)" />
+```
+
+**Tree-shaking (new):**
+```tsx
+import { SpecifyText } from '@specify-text/react';
+import { Italics, Strong } from '@specify-text/react-widgets-base';
+import { ColorfulText } from '@specify-text/react-widgets-builtin';
+
+<SpecifyText
+  text="Hello [world](colorful:red)"
+  widgetMap={{ colorful: ColorfulText, italics: Italics, strong: Strong }}
+/>
+```
+
 ## 流程
 
 Widget: 一个能够处理解析后的文案内容并输出特定格式的基本构建块

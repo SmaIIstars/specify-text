@@ -1,3 +1,24 @@
+## 0.2.0
+
+### Breaking (for direct sub-path importers only)
+
+- `specify-text` 内部已重构为 monorepo。通过 `import SpecifyText from 'specify-text'` 的用户零影响。
+- 如之前使用了 `packages/specify-text/utils/core` 等内部路径，请迁移至 `@specify-text/parser`。
+
+### Added
+
+- `@specify-text/parser`: 框架无关的 DSL 解析器
+- `@specify-text/core`: 组件目录与解析调度
+- `@specify-text/react`: React 渲染器（独立包）
+- `@specify-text/react-widgets-base`: 基础组件（自动注册）
+- `@specify-text/react-widgets-builtin`: 内置扩展组件（按需导入）
+
+### Changed
+
+- 内部重构为 pnpm workspaces monorepo
+- 类型系统增强，减少 `any` 使用
+- 新增 `onError` prop 支持错误回调
+
 # Version 0.0.1
 - feat: 初始版本发布
 
