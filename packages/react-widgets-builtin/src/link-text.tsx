@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import cls from "classnames";
 import { Segment } from "@specify-text/parser";
-import { StrongProps } from "@specify-text/react-widgets-base";
 import { BlankLine, BlankLineProps } from "@specify-text/react-widgets-base";
+import { StrongProps } from "@specify-text/react";
 
 import styles from "./link-text.module.scss";
 import { SpecifyText } from "@specify-text/react";

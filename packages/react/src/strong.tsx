@@ -1,7 +1,14 @@
-import SpecifyText from "@/specify-text";
-import { BaseWidgetProps } from "@/specify-text/typings";
-import { isValidText, stringToBoolean } from "@/specify-text/utils";
+import { isValidText } from "@specify-text/parser";
 import { memo } from "react";
+
+import { SpecifyText } from "./specify-text";
+import { BaseWidgetProps } from "@specify-text/react-widgets-base";
+
+const stringToBoolean = (value: string) => {
+  return ["", "false", "null", "undefined", "0", "NaN"].includes(value)
+    ? false
+    : true;
+};
 
 export interface StrongProps extends BaseWidgetProps {
   strong?: boolean;
@@ -20,7 +27,7 @@ const Strong = (props: StrongProps) => {
 
   return (
     <>
-      {strong || stringToBoolean(typeVal) ? (
+      {strong || stringToBoolean(typeVal ?? "") ? (
         <strong className={strongTextClassName}>
           {isValidText(text) ? <SpecifyText {...props} text={text} /> : text}
         </strong>

@@ -14,7 +14,7 @@
   },
   "files": ["dist"],
   "scripts": {
-    "build": "tsc && cp src/style.css dist/style.css"
+    "build": "rm -rf dist && tsc && cp src/style.css dist/style.css"
   },
   "peerDependencies": {
     "react": ">=16",

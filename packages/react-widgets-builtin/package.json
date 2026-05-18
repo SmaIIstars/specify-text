@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "exports": { ".": "./dist/index.js" },
   "files": ["dist"],
-  "scripts": { "build": "tsc", "dev": "tsc --watch" },
+  "scripts": { "build": "rm -rf dist && tsc && cp src/*.scss dist/", "dev": "tsc --watch" },
   "peerDependencies": { "react": ">=16" },
   "dependencies": {
     "@specify-text/parser": "workspace:*",

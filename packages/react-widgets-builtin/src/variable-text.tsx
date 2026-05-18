@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import { Segment } from "@specify-text/parser";
 import { BlankLineProps } from "@specify-text/react-widgets-base";
-import { StrongProps } from "@specify-text/react-widgets-base";
+import { StrongProps } from "@specify-text/react";
 import { SpecifyText } from "@specify-text/react";
 
 export interface VariableTextProps

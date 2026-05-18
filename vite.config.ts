@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [
     react(),
     typescript({
-      target: "es5",
+      target: "es2018",
       rootDir: resolve("packages"),
       declaration: true,
       declarationDir: resolve("dist"),

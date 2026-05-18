@@ -1,5 +1,4 @@
 import {
-  WidgetMap,
   ColorfulText,
   ColorfulTextProps,
   LinkText,
@@ -17,10 +16,10 @@ export interface CustomWidgetTypeMap {
   link: LinkTextProps;
   variable: VariableTextProps;
   conditional: ConditionalTextProps;
-  strong: ConditionalTextProps;
+  strong: StrongProps;
 }
 
-const widgetMap: WidgetMap<CustomWidgetTypeMap> = {
+const widgetMap: Record<string, React.FC> = {
   colorful: (props: ColorfulTextProps) => <ColorfulText {...props} />,
   link: (props: LinkTextProps) => <LinkText {...props} />,
   variable: (props: VariableTextProps) => <VariableText {...props} />,

@@ -11,11 +11,9 @@
     "noUnusedParameters": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
@@ -29,7 +27,8 @@
   },
   "include": [
     "packages",
-    "examples"
+    "examples",
+    "scripts"
   ],
   "references": [
     {
