@@ -4,3 +4,4 @@ packages:
   - 'packages/react'
   - 'packages/react-widgets-base'
   - 'packages/react-widgets-builtin'
+  - 'packages/specify-text'

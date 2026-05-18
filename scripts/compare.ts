@@ -1,7 +1,7 @@
 // scripts/compare.ts
 // 对比测试工具：同一输入分别跑新旧实现，断言一致
 
-import { textSplit } from '../packages/specify-text/utils/core';
+import { textSplit } from '../packages/specify-text-old/utils/core';
 import { parse } from '../packages/parser/src/index';
 import { createCatalog, resolve } from '../packages/core/src/index';
 import type { Segment } from '../packages/parser/src/index';

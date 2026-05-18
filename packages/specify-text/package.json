@@ -1,0 +1,34 @@
+{
+  "name": "specify-text",
+  "version": "0.2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./style": "./dist/style.css"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc && cp src/style.css dist/style.css"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16"
+  },
+  "dependencies": {
+    "@specify-text/react": "workspace:*",
+    "@specify-text/react-widgets-builtin": "workspace:*"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmaIIstars/specify-text.git"
+  },
+  "homepage": "https://github.com/SmaIIstars/specify-text",
+  "author": "smallstars.he@qq.com"
+}
