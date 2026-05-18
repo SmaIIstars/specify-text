@@ -3,6 +3,8 @@
 
 import { textSplit } from '../packages/specify-text/utils/core';
 import { parse } from '../packages/parser/src/index';
+import { createCatalog, resolve } from '../packages/core/src/index';
+import type { Segment } from '../packages/parser/src/index';
 
 interface CompareResult {
   input: string;
@@ -23,6 +25,52 @@ export function compareParse(input: string): CompareResult {
     pass: deepEqual(oldResult, newResult),
     oldOutput: oldResult,
     newOutput: newResult,
+  };
+}
+
+export function compareResolve(input: string): CompareResult {
+  const oldSegments = textSplit(input);
+  const newSegments = parse(input);
+
+  const catalog = createCatalog({
+    italics: () => 'italics',
+    strong: () => 'strong',
+  });
+
+  const typedSegments = newSegments.filter(
+    (s): s is Segment => typeof s !== 'string'
+  );
+  const newResolved = resolve(typedSegments, catalog);
+
+  // Old logic: simulate catalog lookup - check if type is in known set
+  const knownTypes = new Set(['italics', 'strong']);
+  const oldResolved = oldSegments.map((seg) => {
+    if (typeof seg === 'string') {
+      return { text: seg, hasResolver: false };
+    }
+    const type = (seg as { type?: string }).type;
+    const hasResolver = type ? knownTypes.has(type) : false;
+    return { text: (seg as { text: string }).text, hasResolver };
+  });
+
+  // New: map all parse results to normalized form
+  let resolvedIdx = 0;
+  const newNormalized = newSegments.map((seg) => {
+    if (typeof seg === 'string') {
+      return { text: seg, hasResolver: false };
+    }
+    const resolved = newResolved[resolvedIdx++];
+    return {
+      text: seg.text,
+      hasResolver: resolved ? resolved.resolver !== null : false,
+    };
+  });
+
+  return {
+    input,
+    pass: deepEqual(oldResolved, newNormalized),
+    oldOutput: oldResolved,
+    newOutput: newNormalized,
   };
 }
 
@@ -49,12 +97,14 @@ const testCases = [
   'plain text without any markers',
 ];
 
-const results = testCases.map(compareParse);
-const failed = results.filter((r) => !r.pass);
+const parseResults = testCases.map(compareParse);
+const resolveResults = testCases.map(compareResolve);
+const allResults = [...parseResults, ...resolveResults];
+const allFailed = allResults.filter((r) => !r.pass);
 
-if (failed.length > 0) {
+if (allFailed.length > 0) {
   console.error('FAILED:');
-  failed.forEach((f) => {
+  allFailed.forEach((f) => {
     console.error(`  input: "${f.input}"`);
     console.error(`  old: ${JSON.stringify(f.oldOutput)}`);
     console.error(`  new: ${JSON.stringify(f.newOutput)}`);
@@ -62,4 +112,6 @@ if (failed.length > 0) {
   process.exit(1);
 }
 
-console.log(`All ${results.length} test cases passed.`);
+console.log(
+  `All ${testCases.length * 2} test cases passed (${testCases.length} parse + ${testCases.length} resolve).`
+);
