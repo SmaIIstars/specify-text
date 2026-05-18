@@ -1,8 +1,8 @@
 import { isValidText } from "@specify-text/parser";
 import { memo } from "react";
 
-import { SpecifyText } from "../specify-text";
-import { BaseWidgetProps } from "../types";
+import { SpecifyText } from "@specify-text/react";
+import { BaseWidgetProps } from "./types";
 
 const stringToBoolean = (value: string) => {
   return ["", "false", "null", "undefined", "0", "NaN"].includes(value)

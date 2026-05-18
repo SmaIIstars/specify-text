@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 import BlankLine, { BlankLineProps } from "./blank-line";
-import { BaseWidgetProps } from "../types";
+import { BaseWidgetProps } from "./types";
 
 export interface DividingParagraphProps
   extends BaseWidgetProps,

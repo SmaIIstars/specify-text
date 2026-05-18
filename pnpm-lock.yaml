@@ -85,12 +85,46 @@ importers:
       '@specify-text/parser':
         specifier: workspace:*
         version: link:../parser
+      '@specify-text/react-widgets-base':
+        specifier: workspace:*
+        version: link:../react-widgets-base
       react:
         specifier: '>=16'
         version: 18.3.1
       react-dom:
         specifier: '>=16'
         version: 18.3.1(react@18.3.1)
+
+  packages/react-widgets-base:
+    dependencies:
+      '@specify-text/parser':
+        specifier: workspace:*
+        version: link:../parser
+      react:
+        specifier: '>=16'
+        version: 18.3.1
+    devDependencies:
+      '@specify-text/react':
+        specifier: workspace:*
+        version: link:../react
+
+  packages/react-widgets-builtin:
+    dependencies:
+      '@specify-text/parser':
+        specifier: workspace:*
+        version: link:../parser
+      '@specify-text/react':
+        specifier: workspace:*
+        version: link:../react
+      '@specify-text/react-widgets-base':
+        specifier: workspace:*
+        version: link:../react-widgets-base
+      classnames:
+        specifier: ^2.3.2
+        version: 2.5.1
+      react:
+        specifier: '>=16'
+        version: 18.3.1
 
 packages:
 

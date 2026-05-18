@@ -1,0 +1,15 @@
+{
+  "name": "@specify-text/react-widgets-base",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": "./dist/index.js" },
+  "files": ["dist"],
+  "scripts": { "build": "tsc", "dev": "tsc --watch" },
+  "peerDependencies": { "react": ">=16" },
+  "dependencies": { "@specify-text/parser": "workspace:*" },
+  "devDependencies": { "@specify-text/react": "workspace:*" },
+  "license": "MIT"
+}

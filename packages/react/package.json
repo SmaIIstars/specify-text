@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@specify-text/core": "workspace:*",
-    "@specify-text/parser": "workspace:*"
+    "@specify-text/parser": "workspace:*",
+    "@specify-text/react-widgets-base": "workspace:*"
   },
   "license": "MIT"
 }

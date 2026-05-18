@@ -2,3 +2,5 @@ packages:
   - 'packages/parser'
   - 'packages/core'
   - 'packages/react'
+  - 'packages/react-widgets-base'
+  - 'packages/react-widgets-builtin'

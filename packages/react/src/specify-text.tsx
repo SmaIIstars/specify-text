@@ -1,7 +1,7 @@
 import React, { CSSProperties, useMemo } from 'react';
 import { Segment, ParseOptions, parse } from '@specify-text/parser';
 import { ComponentResolver, createCatalog } from '@specify-text/core';
-import DividingParagraph from './components/dividing-paragraph';
+import { DividingParagraph } from '@specify-text/react-widgets-base';
 import { DEFAULT_BASE_WIDGETS } from './default-widgets';
 
 export interface SpecifyTextProps {
