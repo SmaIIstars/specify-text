@@ -3,26 +3,21 @@ import React, { memo } from "react";
 
 import { BlankLine, BlankLineProps } from "@specify-text/react-widgets-base";
 import { BaseWidgetProps } from "@specify-text/react-widgets-base";
+import { stringToBoolean } from "@specify-text/core";
 import { SpecifyText } from "./specify-text";
 
-const stringToBoolean = (value: string) => {
-  return ["", "false", "null", "undefined", "0", "NaN"].includes(value)
-    ? false
-    : true;
-};
-
-export interface ItalicsProps extends BaseWidgetProps, BlankLineProps {
+export interface ItalicProps extends BaseWidgetProps, BlankLineProps {
   textClassName?: string;
-  ItalicsTextClassName?: string;
+  italicTextClassName?: string;
 }
 
-const Italics = (props: ItalicsProps) => {
+const Italic = (props: ItalicProps) => {
   const {
     text,
     typeVal,
     textClassName,
     blankLineClassName,
-    ItalicsTextClassName,
+    italicTextClassName,
   } = props;
   const paragraphs = text.split("\n");
 
@@ -31,7 +26,7 @@ const Italics = (props: ItalicsProps) => {
       {paragraphs?.map((line, idx) => (
         <React.Fragment key={line ? `${line}` : `${line}-${idx}`}>
           {stringToBoolean(typeVal ?? "") ? (
-            <i className={ItalicsTextClassName}>
+            <i className={italicTextClassName}>
               {isValidText(line) ? (
                 <SpecifyText {...props} text={line} />
               ) : (
@@ -50,4 +45,4 @@ const Italics = (props: ItalicsProps) => {
   );
 };
 
-export default memo(Italics);
+export default memo(Italic);

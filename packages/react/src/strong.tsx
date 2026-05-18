@@ -3,12 +3,7 @@ import { memo } from "react";
 
 import { SpecifyText } from "./specify-text";
 import { BaseWidgetProps } from "@specify-text/react-widgets-base";
-
-const stringToBoolean = (value: string) => {
-  return ["", "false", "null", "undefined", "0", "NaN"].includes(value)
-    ? false
-    : true;
-};
+import { stringToBoolean } from "@specify-text/core";
 
 export interface StrongProps extends BaseWidgetProps {
   strong?: boolean;

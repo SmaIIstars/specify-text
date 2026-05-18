@@ -1,7 +1,7 @@
 import React, { CSSProperties, useMemo } from 'react';
 import { Segment, ParseOptions, parse } from '@specify-text/parser';
 import { ComponentResolver, createCatalog } from '@specify-text/core';
-import { DividingParagraph } from '@specify-text/react-widgets-base';
+import { ParagraphGroup } from '@specify-text/react-widgets-base';
 import { DEFAULT_BASE_WIDGETS } from './default-widgets';
 
 export interface SpecifyTextProps {
@@ -44,12 +44,12 @@ const SpecifyTextInner = (props: SpecifyTextProps) => {
           {segments.map((item, idx) => {
             if (typeof item === 'string') {
               return (
-                <DividingParagraph key={idx} {...props} text={item} />
+                <ParagraphGroup key={idx} {...props} text={item} />
               );
             }
             if (!item.type) {
               return (
-                <DividingParagraph key={idx} {...props} text={item.text} />
+                <ParagraphGroup key={idx} {...props} text={item.text} />
               );
             }
             const resolver = catalog.get(item.type);
@@ -64,12 +64,12 @@ const SpecifyTextInner = (props: SpecifyTextProps) => {
                 const error = e instanceof Error ? e : new Error(String(e));
                 onError?.(error, item);
                 return (
-                  <DividingParagraph key={idx} {...props} text={item.text} />
+                  <ParagraphGroup key={idx} {...props} text={item.text} />
                 );
               }
             }
             return (
-              <DividingParagraph key={idx} {...props} text={item.text} />
+              <ParagraphGroup key={idx} {...props} text={item.text} />
             );
           })}
         </span>

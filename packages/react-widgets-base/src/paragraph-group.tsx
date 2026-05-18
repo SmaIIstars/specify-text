@@ -3,19 +3,19 @@ import React, { memo } from "react";
 import BlankLine, { BlankLineProps } from "./blank-line";
 import { BaseWidgetProps } from "./types";
 
-export interface DividingParagraphProps
+export interface ParagraphGroupProps
   extends BaseWidgetProps,
     BlankLineProps {
   textClassName?: string;
-  dividingParagraphWrapperClassName?: string;
+  paragraphGroupWrapperClassName?: string;
   onClick?: (...args: any[]) => any;
 }
 
-const DividingParagraph = (props: DividingParagraphProps) => {
+const ParagraphGroup = (props: ParagraphGroupProps) => {
   const {
     text,
     textClassName,
-    dividingParagraphWrapperClassName,
+    paragraphGroupWrapperClassName,
     onClick,
     blankLineClassName,
   } = props;
@@ -24,7 +24,7 @@ const DividingParagraph = (props: DividingParagraphProps) => {
   const paragraphs = text.split("\n") ?? [];
 
   return (
-    <span className={dividingParagraphWrapperClassName} onClick={onClick}>
+    <span className={paragraphGroupWrapperClassName} onClick={onClick}>
       {paragraphs?.map((l, idy) => {
         return (
           <React.Fragment key={l ? `${l}-${idy}` : idy}>
@@ -40,4 +40,4 @@ const DividingParagraph = (props: DividingParagraphProps) => {
   );
 };
 
-export default memo(DividingParagraph);
+export default memo(ParagraphGroup);

@@ -1,9 +1,7 @@
 import { memo, useMemo } from "react";
 
-import cls from "classnames";
 import { Segment } from "@specify-text/parser";
 
-import styles from "./conditional-text.module.scss";
 import { SpecifyText } from "@specify-text/react";
 
 export interface ConditionalTextProps extends Segment {
@@ -31,8 +29,8 @@ const ConditionalText = (props: ConditionalTextProps) => {
   return isShow ? (
     <SpecifyText
       {...props}
-      text={typeVal}
-      className={cls([styles.conditionalTextWrapper, conditionalTextClassName])}
+      text={props.text}
+      className={conditionalTextClassName}
     />
   ) : (
     <></>

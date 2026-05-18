@@ -4,7 +4,7 @@ import { resolve, resolveWithFallback } from '../resolve';
 import type { Segment } from '@specify-text/parser';
 
 const segments: Segment[] = [
-  { text: 'Hello', type: 'italics', typeVal: 'true' },
+  { text: 'Hello', type: 'italic', typeVal: 'true' },
   { text: 'World', type: 'strong', typeVal: 'false' },
   { text: 'Unknown', type: 'missing', typeVal: 'x' },
   { text: 'Plain text' },
@@ -13,25 +13,25 @@ const segments: Segment[] = [
 describe('createCatalog', () => {
   it('creates an empty catalog by default', () => {
     const catalog = createCatalog();
-    expect(catalog.get('italics')).toBeUndefined();
+    expect(catalog.get('italic')).toBeUndefined();
   });
 
   it('creates a catalog with defaults', () => {
-    const italics = () => 'italics';
-    const catalog = createCatalog({ italics });
-    expect(catalog.get('italics')).toBe(italics);
+    const italic = () => 'italic';
+    const catalog = createCatalog({ italic });
+    expect(catalog.get('italic')).toBe(italic);
     expect(catalog.get('strong')).toBeUndefined();
   });
 });
 
 describe('resolve', () => {
   it('matches segments to resolvers', () => {
-    const italics = () => 'italics';
-    const catalog = createCatalog({ italics });
+    const italic = () => 'italic';
+    const catalog = createCatalog({ italic });
 
     const result = resolve(segments, catalog);
 
-    expect(result[0].resolver).toBe(italics);
+    expect(result[0].resolver).toBe(italic);
     expect(result[1].resolver).toBeNull();
     expect(result[2].resolver).toBeNull();
     expect(result[3].resolver).toBeNull();
@@ -45,12 +45,12 @@ describe('resolve', () => {
   });
 
   it('preserves text and props in resolved segments', () => {
-    const italics = () => 'italics';
-    const catalog = createCatalog({ italics });
+    const italic = () => 'italic';
+    const catalog = createCatalog({ italic });
     const result = resolve(segments, catalog);
 
     expect(result[0].text).toBe('Hello');
-    expect(result[0].props).toEqual({ text: 'Hello', type: 'italics', typeVal: 'true' });
+    expect(result[0].props).toEqual({ text: 'Hello', type: 'italic', typeVal: 'true' });
   });
 
   it('returns empty array for empty input', () => {

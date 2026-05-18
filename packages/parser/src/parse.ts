@@ -1,4 +1,5 @@
 import { Segment, ParseOptions } from './types';
+import { getCacheKey, getCache, setCache } from './cache';
 
 const DEFAULT_REGEX = /\[.*?\]\(.*?:.*?\)/s;
 
@@ -90,11 +91,20 @@ export function parse(text: string, options?: ParseOptions): (Segment | string)[
   if (options?.parse) {
     return options.parse(text);
   }
-  const regex = options?.regex ?? DEFAULT_REGEX;
-  if (!isValidTextDefault(text, regex)) {
-    return [text];
+  const regex = options?.regex;
+  const cacheKey = getCacheKey(text, regex);
+  const cached = getCache<(Segment | string)[]>(cacheKey);
+  if (cached) return cached;
+
+  const effectiveRegex = regex ?? DEFAULT_REGEX;
+  if (!isValidTextDefault(text, effectiveRegex)) {
+    const result = [text];
+    setCache(cacheKey, result);
+    return result;
   }
-  return parseDefault(text, regex);
+  const result = parseDefault(text, effectiveRegex);
+  setCache(cacheKey, result);
+  return result;
 }
 
 export function isValidText(text: string, regex?: RegExp): boolean {

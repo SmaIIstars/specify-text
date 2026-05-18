@@ -1,7 +1,7 @@
 import { ExampleConfig } from "../typings";
 
 const commonConfig = {
-  text: "[SpecifyText](italics:true)",
+  text: "[SpecifyText](italic:true)",
 };
 
 const config: ExampleConfig = {

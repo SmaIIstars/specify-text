@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { parse, isValidText } from '../parse';
 import { escape, unescape } from '../utils';
+import { clearCache } from '../cache';
 
 describe('parse', () => {
   it('returns plain text as-is', () => {
@@ -8,9 +9,9 @@ describe('parse', () => {
   });
 
   it('parses a single tagged segment', () => {
-    expect(parse('[Hello](italics:true)')).toEqual([
+    expect(parse('[Hello](italic:true)')).toEqual([
       '',
-      { text: 'Hello', type: 'italics', typeVal: 'true' },
+      { text: 'Hello', type: 'italic', typeVal: 'true' },
     ]);
   });
 
@@ -99,11 +100,42 @@ describe('parse', () => {
 
 describe('isValidText', () => {
   it('returns true for tagged text', () => {
-    expect(isValidText('[Hello](italics:true)')).toBe(true);
+    expect(isValidText('[Hello](italic:true)')).toBe(true);
   });
 
   it('returns false for plain text', () => {
     expect(isValidText('Hello World')).toBe(false);
+  });
+});
+
+describe('cache', () => {
+  beforeEach(() => {
+    clearCache();
+  });
+
+  it('returns cached result on repeated calls', () => {
+    const result1 = parse('[Hello](italic:true)');
+    const result2 = parse('[Hello](italic:true)');
+    expect(result1).toBe(result2);
+  });
+
+  it('distinguishes different regex patterns', () => {
+    const r1 = parse('[Hello](italic:true)', { regex: /\[.*?\]\(.*?:.*?\)/s });
+    const r2 = parse('[Hello](italic:true)', { regex: /\[.*?\]\(.*?\)/s });
+    expect(r1).not.toBe(r2);
+  });
+
+  it('skips cache when custom parse is provided', () => {
+    const fn = () => [{ text: 'custom' }];
+    expect(parse('x', { parse: fn })).toEqual([{ text: 'custom' }]);
+    expect(parse('x', { parse: fn })).toEqual([{ text: 'custom' }]);
+  });
+
+  it('clearCache empties the cache', () => {
+    const r1 = parse('[a](strong:true)');
+    clearCache();
+    const r2 = parse('[a](strong:true)');
+    expect(r1).not.toBe(r2);
   });
 });
 
