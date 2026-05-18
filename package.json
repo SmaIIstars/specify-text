@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "specify-text",
   "version": "0.1.1",
   "type": "module",
@@ -22,7 +23,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "commit": "git add . && git-cz",
     "preview": "vite preview",
-    "compare": "npx tsx scripts/compare.ts"
+    "compare": "npx tsx scripts/compare.ts",
+    "build:parser": "pnpm --filter @specify-text/parser build"
   },
   "config": {
     "commitizen": {
