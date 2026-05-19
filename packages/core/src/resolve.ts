@@ -1,5 +1,5 @@
 import { Segment } from '@specify-text/parser';
-import { Catalog, ResolvedSegment } from './types';
+import { Catalog, ResolvedSegment } from './types.js';
 
 export function resolve(
   segments: Segment[],

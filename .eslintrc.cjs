@@ -13,4 +13,10 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
   },
+  overrides: [
+    {
+      files: ["**/bin/**"],
+      env: { node: true },
+    },
+  ],
 };

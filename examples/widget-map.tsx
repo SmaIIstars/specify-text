@@ -3,10 +3,7 @@ import {
   ColorfulText,
   ColorfulTextProps,
 } from "@specify-text/react-widgets-builtin";
-import {
-  LinkText,
-  LinkTextProps,
-} from "@specify-text/react-widgets-builtin";
+import { LinkText, LinkTextProps } from "@specify-text/react-widgets-builtin";
 import {
   VariableText,
   VariableTextProps,
@@ -25,9 +22,7 @@ export interface CustomWidgetTypeMap {
   conditional: ConditionalTextProps;
 }
 
-export type CustomWidgetMapProps<T = CustomWidgetTypeMap> = Partial<
-  T[keyof T]
->;
+export type CustomWidgetMapProps<T = CustomWidgetTypeMap> = Partial<T[keyof T]>;
 
 // Register custom widgets. Built-in widgets (italic, strong) are already
 // handled by DEFAULT_BASE_WIDGETS from @specify-text/react.

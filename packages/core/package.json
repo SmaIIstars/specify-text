@@ -1,6 +1,6 @@
 {
   "name": "@specify-text/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -10,11 +10,22 @@
   },
   "files": ["dist"],
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc",
     "dev": "tsc --watch"
   },
   "dependencies": {
     "@specify-text/parser": "workspace:*"
   },
+  "description": "Framework-agnostic component catalog and resolver for specify-text",
+  "keywords": ["specify-text", "core", "catalog", "resolver", "component"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmaIIstars/SpecifyText"
+  },
+  "author": "SmaIIstars",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
   "license": "MIT"
 }

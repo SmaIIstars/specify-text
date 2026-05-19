@@ -1,4 +1,4 @@
-import { Catalog, ComponentResolver } from './types';
+import { Catalog, ComponentResolver } from './types.js';
 
 export function createCatalog(
   defaults?: Record<string, ComponentResolver>

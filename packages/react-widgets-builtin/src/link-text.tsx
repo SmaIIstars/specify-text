@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import cls from "classnames";
 import { Segment } from "@specify-text/parser";
 import { BlankLine, BlankLineProps } from "@specify-text/react-widgets-base";
 import { StrongProps } from "@specify-text/react";
@@ -41,7 +40,7 @@ const LinkText = (props: LinkTextProps) => {
 
   return (
     <span
-      className={cls(styles.linkTextWrapper, linkWrapperClassName)}
+      className={`${linkWrapperClassName} ${styles.linkTextWrapper}`}
       onClick={handleLinkOnClick}
     >
       {paragraphs?.map((line, idx) => (

@@ -1,6 +1,6 @@
 {
   "name": "@specify-text/parser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -8,10 +8,24 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "files": ["dist"],
+  "files": ["dist", "bin"],
+  "bin": {
+    "specify-text": "./bin/cli.mjs"
+  },
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc",
     "dev": "tsc --watch"
   },
+  "description": "DSL parser for specify-text — zero-dependency tagged-text AST generator",
+  "keywords": ["specify-text", "parser", "dsl", "ast", "tagged-text"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmaIIstars/SpecifyText"
+  },
+  "author": "SmaIIstars",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
   "license": "MIT"
 }

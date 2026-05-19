@@ -14,7 +14,7 @@
   },
   "files": ["dist"],
   "scripts": {
-    "build": "rm -rf dist && tsc && cp src/style.css dist/style.css"
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc && cp src/style.css dist/style.css"
   },
   "peerDependencies": {
     "react": ">=16",

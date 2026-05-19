@@ -315,7 +315,6 @@ const text = "[ScreenSize1\n](conditional:screenSize1)[ScreenSize2\n](conditiona
 
 ```typescript
 import React, { memo } from "react";
-import cls from "classnames";
 // 导入内置类型和内置组件
 import { BaseWidgetProps, BlankLine } from "specify-text";
 

@@ -1,13 +1,27 @@
 {
   "name": "@specify-text/react-widgets-base",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": { ".": "./dist/index.js" },
   "files": ["dist"],
-  "scripts": { "build": "rm -rf dist && tsc", "dev": "tsc --watch" },
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc",
+    "dev": "tsc --watch"
+  },
+  "description": "Base widgets (BlankLine, ParagraphGroup) for specify-text React rendering",
+  "keywords": ["specify-text", "react", "widgets", "base"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmaIIstars/SpecifyText"
+  },
+  "author": "SmaIIstars",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
   "peerDependencies": { "react": ">=16" },
   "dependencies": { "@specify-text/parser": "workspace:*" },
   "license": "MIT"

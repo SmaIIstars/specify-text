@@ -30,6 +30,9 @@
     "examples",
     "scripts"
   ],
+  "exclude": [
+    "**/bin/**"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

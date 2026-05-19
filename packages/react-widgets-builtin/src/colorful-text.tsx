@@ -1,6 +1,5 @@
 import React, { memo } from "react";
 
-import cls from "classnames";
 import { Segment } from "@specify-text/parser";
 import { BlankLine, BlankLineProps } from "@specify-text/react-widgets-base";
 
@@ -26,10 +25,7 @@ const ColorfulText = (props: ColorfulTextProps) => {
             <SpecifyText
               {...props}
               text={line}
-              wrapperClassName={cls([
-                colorfulTextClassName,
-                styles.colorfulTextWrapper,
-              ])}
+              wrapperClassName={`${colorfulTextClassName} ${styles.colorfulTextWrapper}`}
               style={{
                 [typeVal.startsWith("linear-gradient")
                   ? `backgroundImage`

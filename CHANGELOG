@@ -19,37 +19,47 @@
 - 类型系统增强，减少 `any` 使用
 - 新增 `onError` prop 支持错误回调
 
-# Version 0.0.1
-- feat: 初始版本发布
+## 0.1.1
 
-# Version 0.0.2
-- feat: 新增自定义文本处理逻辑功能
-- docs: 更新 README.md
+- refactor: 修改文案核心切割逻辑，支持嵌套文案
+- docs: 更新内置组件 Strong 说明
 
-# Version 0.0.3
-- fix: react版本过高导致低版本使用报错
+## 0.0.9
 
-# Version 0.0.4
-- fix: 更改打包后类名
-- docs: 更新 README.md 样式引入
+- docs: 更新换行组件支持换行符 `\n` 不支持 `\\n` 的说明
 
-# Version 0.0.5
-- feat: 新增条件判断组件
-- docs: 更新 README.md 条件判断组件说明
+## 0.0.8
 
-# Version 0.0.6
-- fix: 修改类型声明
-
-# Version 0.0.7
-- fix: 修改 Variable 未取到值的默认值为 Description
-
-# Version 0.0.8
 - fix: 更新正则表达式
 - fix: 移除 sourcemap
 
-# Version 0.0.9
-- docs: 更新换行组件支持换行符`\n`不支持`\\n`的说明
+## 0.0.7
 
-# Version 0.1.1
-- refactor: 修改文案核心切割逻辑, 支持嵌套文案
-- docs: 更新内置组件 Strong 说明
+- fix: 修改 Variable 未取到值的默认值为 Description
+
+## 0.0.6
+
+- fix: 修改类型声明
+
+## 0.0.5
+
+- feat: 新增条件判断组件
+- docs: 更新条件判断组件说明
+
+## 0.0.4
+
+- fix: 更改打包后类名
+- docs: 更新样式引入说明
+
+## 0.0.3
+
+- fix: React 版本过高导致低版本使用报错
+
+## 0.0.2
+
+- feat: 新增自定义文本处理逻辑功能
+- docs: 更新 README
+
+## 0.0.1
+
+- feat: 初始版本发布

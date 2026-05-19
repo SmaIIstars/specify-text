@@ -1,19 +1,32 @@
 {
   "name": "@specify-text/react-widgets-builtin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": { ".": "./dist/index.js" },
   "files": ["dist"],
-  "scripts": { "build": "rm -rf dist && tsc && cp src/*.scss dist/", "dev": "tsc --watch" },
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc && cp src/*.scss dist/",
+    "dev": "tsc --watch"
+  },
+  "description": "Built-in widgets (ColorfulText, LinkText, VariableText, ConditionalText) for specify-text",
+  "keywords": ["specify-text", "react", "widgets", "builtin"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmaIIstars/SpecifyText"
+  },
+  "author": "SmaIIstars",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
   "peerDependencies": { "react": ">=16" },
   "dependencies": {
     "@specify-text/parser": "workspace:*",
     "@specify-text/react": "workspace:*",
-    "@specify-text/react-widgets-base": "workspace:*",
-    "classnames": "^2.3.2"
+    "@specify-text/react-widgets-base": "workspace:*"
   },
   "license": "MIT"
 }

@@ -98,6 +98,95 @@ describe('parse', () => {
   });
 });
 
+describe('parse with escape', () => {
+  it('treats escaped bracket as literal text', () => {
+    expect(parse('hello \\[not a tag\\] world')).toEqual([
+      'hello \\[not a tag\\] world',
+    ]);
+  });
+
+  it('handles mixed escaped and real tags', () => {
+    expect(parse('\\[escaped\\] [real](bold:true)')).toEqual([
+      '\\[escaped\\] ',
+      { text: 'real', type: 'bold', typeVal: 'true' },
+    ]);
+  });
+
+  it('keeps escaped text raw in segment', () => {
+    expect(parse('[hello \\[world\\]](bold:true)')).toEqual([
+      '',
+      { text: 'hello \\[world\\]', type: 'bold', typeVal: 'true' },
+    ]);
+  });
+
+  it('handles escaped backslash before bracket', () => {
+    // \\[ = literal backslash + real bracket
+    expect(parse('hello \\\\[real](bold:true)')).toEqual([
+      'hello \\\\',
+      { text: 'real', type: 'bold', typeVal: 'true' },
+    ]);
+  });
+
+  it('preserves backslash before non-special characters', () => {
+    expect(parse('hello \\n world')).toEqual(['hello \\n world']);
+  });
+
+  it('preserves \\n between tags as literal text', () => {
+    expect(parse('[a](bold:true)\\n[b](bold:true)')).toEqual([
+      '',
+      { text: 'a', type: 'bold', typeVal: 'true' },
+      '\\n',
+      { text: 'b', type: 'bold', typeVal: 'true' },
+    ]);
+  });
+
+  it('round-trip: escape then parse keeps raw text', () => {
+    const original = '[real](bold:true)';
+    const escaped = escape(original);
+    const parsed = parse(escaped);
+    // parse returns raw text; unescape at render time restores original
+    expect(parsed).toEqual([escaped]);
+  });
+
+  // Edge case: 3 backslashes before bracket → bracket IS escaped
+  it('triple backslash escapes the bracket (odd count)', () => {
+    expect(parse('hello \\\\\\[not a tag\\] world')).toEqual([
+      'hello \\\\\\[not a tag\\] world',
+    ]);
+  });
+
+  // Edge case: 4 backslashes before bracket → bracket is NOT escaped
+  it('quadruple backslash: bracket is real (even count)', () => {
+    expect(parse('hello \\\\\\\\[real](bold:true)')).toEqual([
+      'hello \\\\\\\\',
+      { text: 'real', type: 'bold', typeVal: 'true' },
+    ]);
+  });
+
+  // Edge case: all brackets escaped → entire text is plain
+  it('treats fully escaped text as plain string', () => {
+    expect(parse('\\[a\\]\\(b\\)')).toEqual(['\\[a\\]\\(b\\)']);
+  });
+
+  // Edge case: escaped parens inside tag text are preserved
+  it('preserves escaped parens inside tag text', () => {
+    expect(parse('[hello \\(world\\)](bold:true)')).toEqual([
+      '',
+      { text: 'hello \\(world\\)', type: 'bold', typeVal: 'true' },
+    ]);
+  });
+
+  // Edge case: trailing backslash at end of text
+  it('preserves trailing backslash', () => {
+    expect(parse('hello\\')).toEqual(['hello\\']);
+  });
+
+  // Edge case: double backslash in plain text (no tags)
+  it('preserves double backslash in plain text', () => {
+    expect(parse('hello \\\\ world')).toEqual(['hello \\\\ world']);
+  });
+});
+
 describe('isValidText', () => {
   it('returns true for tagged text', () => {
     expect(isValidText('[Hello](italic:true)')).toBe(true);
@@ -140,12 +229,22 @@ describe('cache', () => {
 });
 
 describe('escape / unescape', () => {
+  it('handles empty string', () => {
+    expect(escape('')).toBe('');
+    expect(unescape('')).toBe('');
+  });
+
   it('escapes square brackets', () => {
-    expect(escape('[text]')).toBe('\\[text]');
+    expect(escape('[text]')).toBe('\\[text\\]');
   });
 
   it('unescapes square brackets', () => {
-    expect(unescape('\\[text]')).toBe('[text]');
+    expect(unescape('\\[text\\]')).toBe('[text]');
+  });
+
+  it('escapes and unescapes all special characters', () => {
+    const original = 'hello [world] (test) \\ backslash';
+    expect(unescape(escape(original))).toBe(original);
   });
 
   it('round-trips correctly', () => {

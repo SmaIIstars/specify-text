@@ -1,5 +1,5 @@
 import React, { CSSProperties, useMemo } from 'react';
-import { Segment, ParseOptions, parse } from '@specify-text/parser';
+import { Segment, ParseOptions, parse, printAstToConsole } from '@specify-text/parser';
 import { ComponentResolver, createCatalog } from '@specify-text/core';
 import { ParagraphGroup } from '@specify-text/react-widgets-base';
 import { DEFAULT_BASE_WIDGETS } from './default-widgets';
@@ -13,6 +13,7 @@ export interface SpecifyTextProps {
   textSplit?: (text: string) => (Segment | string)[];
   onError?: (error: Error, segment: Segment) => void;
   parseOptions?: ParseOptions;
+  debug?: boolean;
   [key: string]: unknown;
 }
 
@@ -24,6 +25,8 @@ const SpecifyTextInner = (props: SpecifyTextProps) => {
     textSplit: customSplit,
     style,
     onError,
+    debug,
+    parseOptions,
   } = props;
 
   const segments = useMemo((): (Segment | string)[] => {
@@ -37,6 +40,10 @@ const SpecifyTextInner = (props: SpecifyTextProps) => {
     const combined = { ...DEFAULT_BASE_WIDGETS, ...widgetMap };
     return createCatalog(combined);
   }, [widgetMap]);
+
+  if (debug) {
+    printAstToConsole(text, parseOptions);
+  }
 
   return (
     <>

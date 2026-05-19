@@ -25,6 +25,7 @@ dist-ssr
 
 # IDE
 .vscode
-.claude
+.claude*
 .temp
 docs
+CLAUDE.md
